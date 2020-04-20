@@ -8,7 +8,8 @@ export default function ToDoInput(props){
             props.setList([ ...props.list, { 
                 task: textInput.current.value, 
                 completed: false, 
-                id: props.list.length ? props.list.reduce((acc, curr) => acc+curr.id, 0) + 1 : 0 }]);
+                id: Date.now() }]);
+                
             textInput.current.value = "";
         }
     }

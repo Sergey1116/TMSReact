@@ -8,8 +8,8 @@ export default function ToDoFilters(props){
     return (
     <ul className="filters">
         {props.filters.map(val => 
-        <li className={`${props.activFilter === val? "active": ""}`} 
-            key={val} 
+        <li key={val} 
+            className={`${props.activFilter === val? "active": ""}`} 
             onClick={onChangeFilter}>
                 {val}
         </li>)}

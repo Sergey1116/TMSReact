@@ -9,7 +9,7 @@ export function getToDoList() {
     return listString ? JSON.parse(listString) : [];
 }
 
-export function filterList(list, filter = "All") {
+export function sortList(list, filter = "All") {
     switch (filter) {
         default:
         case "All":
