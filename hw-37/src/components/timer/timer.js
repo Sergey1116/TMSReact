@@ -5,22 +5,14 @@ import './style.scss';
 export default class StopWatch extends Component {
     constructor(props){
       super(props);
-      this.state = {date: new Date(), clockRun: false, firstStart: true, dateStart: new Date()};
+      this.state = {time: 0, clockRun: false};
     }
 
-    tick() {
-      this.setState({date: new Date()});
-    }
-    
     start(){
-      if (this.firstStart){
-        this.setState({ date: new Date(), clockRun:true, firstStart: false, dateStart: new Date() });
-      } else{
-        this.setState({ date: new Date() , clockRun:true, dateStart:  new Date() - (this.state.date - this.state.dateStart)});
-      }
+      this.setState({clockRun: true});
       this.timerID = setInterval(
-        () => this.tick(),
-        1
+        () => this.setState({time: ++this.state.time}),
+        1000
       );
     }
 
@@ -31,10 +23,10 @@ export default class StopWatch extends Component {
 
     restart(){
       clearInterval(this.timerID);
-      this.setState({ date: this.state.dateStart, clockRun:false, firstStart: true });
+      this.setState({time: 0, clockRun: false });
     }
 
-    buttonsStartStop(){
+    startStop(){
       if (this.state.clockRun) {
         return (<i className='material-icons stop' onClick={this.stop.bind(this)}>pause_circle_outline</i>);
       } else {
@@ -47,17 +39,18 @@ export default class StopWatch extends Component {
     }
 
     render(){
-      const time = new Date(this.state.date-this.state.dateStart);
       return(
           <h2 className='stopwatch'>
-            {this.buttonsStartStop()}
+            {this.startStop()}
             <span>
-              {time.getMinutes().toLocaleString( undefined, {minimumIntegerDigits: 2})}:
-              {time.getSeconds().toLocaleString( undefined, {minimumIntegerDigits: 2})}:
-              {time.getMilliseconds().toLocaleString(undefined, {minimumIntegerDigits: 3})}
+              {minDigits(Math.trunc(this.state.time/60), 2)}:{minDigits(this.state.time%60, 2)}
             </span>
             <i className='material-icons reset'  onClick={this.restart.bind(this)}>replay</i>
         </h2>
         );
     }
+}
+
+function minDigits(val, digit){
+  return val.toLocaleString( undefined, {minimumIntegerDigits: 2});
 }
