@@ -1,0 +1,41 @@
+
+.main-block{
+    background-color: rgb(46, 93, 194);
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+
+    .day{
+        background-color: rgb(46, 172, 194);
+    }
+
+    .night{
+        background-color: rgb(39, 51, 53);
+    }
+
+    .sky{
+        width: 300px;
+        height: 200px;
+        padding-top: 20px;
+        
+        div{
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            margin: 20px auto 0px;
+        }
+        .sun{
+            background-color: rgb(252, 236, 14);
+        }
+        .moon{
+            background-color: rgb(250, 250, 250);
+        }
+    }
+
+    button {
+        border-radius: 5px;
+        display: block;
+        margin: 20px auto;
+        cursor: pointer;
+      }
+}
