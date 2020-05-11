@@ -1,0 +1,121 @@
+$main-color: rgb(0, 0, 0);
+$second-color: rgb(177, 175, 175);
+$bgc-color: rgb(255, 255, 255);
+$checkBox-color: rgb(46, 189, 46);
+
+.toDoList {
+    margin: 0 auto;
+    max-width: 580px;
+    width: 100%;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .toDoInput {
+        border: 1px solid $second-color;
+        padding: 15px 20px;
+        display: flex;
+
+        input {
+            width: 100%;
+            border: 0px;
+            outline: 0;
+            font-size: 24px;
+
+            &::placeholder {
+                color: $second-color;
+            }
+        }
+
+        button {
+            font-size: 24px;
+            background-color: $bgc-color;
+            color: $second-color;
+            border: 0px;
+            outline: 0;
+            cursor: pointer;
+        }
+    }
+
+    .tasks {
+        margin: 0px;
+        padding: 15px;
+        min-height: 150px;
+        border: 1px solid $second-color;
+        border-top: 0px;
+
+        .toDoElement {
+            padding: 4px;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+
+            &::before,
+            &::after {
+                box-sizing: border-box;
+            }
+
+            .elem {
+                display: flex;
+                align-items: center;
+
+                input[type="checkbox"] {
+                    margin-right: 15px;
+                    position: relative;
+                    width: 1.5em;
+                    height: 1.5em;
+                    color: $bgc-color;
+                    border: 1px solid $main-color;
+                    border-radius: 2px;
+                    appearance: none;
+                    outline: 0;
+                    cursor: pointer;
+
+                    &::before {
+                        position: absolute;
+                        right: 4px;
+                        bottom: 1px;
+                        content: '\2714';
+                    }
+
+                    &:checked {
+                        border-color: $checkBox-color;
+                        background: $checkBox-color;
+                    }
+                }
+
+                .completed {
+                    color: $second-color;
+                    text-decoration: line-through;
+                }
+            }
+
+            .deleteElem {
+                cursor: pointer;
+                color: $second-color;
+            }
+        }
+    }
+
+    .filters {
+        padding: 4px;
+        display: flex;
+        justify-content: space-evenly;
+
+        .active {
+            color: $main-color;
+        }
+
+        li {
+            color: $second-color;
+            cursor: pointer;
+        }
+
+        li:hover {
+            color: $checkBox-color;
+            text-decoration: underline;
+        }
+    }
+}
